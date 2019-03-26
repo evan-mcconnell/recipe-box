@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- <h1>{{title}}</h1>
+
+<div *ngFor='let currentRecipe of recipes'>
+  <h2>{{currentRecipe.title}}</h2>
+  <ul>
+    <li *ngFor='let ingredient of currentRecipe.ingredients'>{{ingredient}}</li>
+  </ul>
+  <h3>{{currentRecipe.instructions}}</h3>
+  <p>{{currentRecipe.made}}</p>
+  <button type="button" (click)='currentRecipe.markMade($event)'>Click Made</button>
+  <button type="button" (click)='currentRecipe.markNotMade($event)'>Click Not Made</button>
+
+</div> -->
+
+
+
+
+<h1>{{title}}</h1>
+<div *ngFor = 'let currentRecipe of recipes'><h2>{{currentRecipe.title}}</h2>
+  <ul>
+    <li *ngFor = 'let ingredient of currentRecipe.ingredients'>{{ingredient}}</li>
+  </ul>
+  <h4>{{currentRecipe.instructions}}</h4>
+  <p>{{currentRecipe.made}}</p>
+  <button type="button" (click)= 'currentRecipe.markMade($event)'>Made this Recipe</button>
+  <button type="button" (click)= 'currentRecipe.markNotMade($event)'>Not Made</button>
+</div>
