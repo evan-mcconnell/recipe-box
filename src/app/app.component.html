@@ -15,14 +15,37 @@
 
 
 
+<div class="container">
 
-<h1>{{title}}</h1>
-<div *ngFor = 'let currentRecipe of recipes'><h2>{{currentRecipe.title}}</h2>
-  <ul>
-    <li *ngFor = 'let ingredient of currentRecipe.ingredients'>{{ingredient}}</li>
-  </ul>
-  <h4>{{currentRecipe.instructions}}</h4>
-  <p>{{currentRecipe.made}}</p>
-  <button type="button" (click)= 'currentRecipe.markMade($event)'>Made this Recipe</button>
-  <button type="button" (click)= 'currentRecipe.markNotMade($event)'>Not Made</button>
+  <h1>{{title}}</h1>
+  <h2>Hello, {{userName}}!</h2>
+
+  <input [(ngModel)]="userName" type="text" name="user">
+
+  <div *ngFor = 'let currentRecipe of recipes'>
+    <h2 (click)="currentRecipe.show = !currentRecipe.show">{{currentRecipe.title}}</h2>
+    <p [class]='recipeColor(currentRecipe)'>Difficulty Level {{currentRecipe.difficulty}}</p>
+    <div *ngIf="currentRecipe.show">
+      <ul>
+        <li *ngFor = 'let ingredient of currentRecipe.ingredients'>{{ingredient}}</li>
+      </ul>
+      <h4>{{currentRecipe.instructions}}</h4>
+      <button (click)='updateInstructions(currentRecipe)'>Update</button>
+      <p>{{currentRecipe.made}}</p>
+      <button type="button" (click)= 'currentRecipe.markMade($event)'>Made this Recipe</button>
+      <button type="button" (click)= 'currentRecipe.markNotMade($event)'>Not Made</button>
+    </div>
+  </div>
+  <div *ngIf="selectedRecipe" class="edit-box">
+    <h3>{{selectedRecipe.instructions}}</h3>
+    <h3>Edit instructions</h3>
+    <label>Enter New Instructions</label>
+    <input [(ngModel)]="selectedRecipe.instructions"><br>
+    <label>Enter a Recipe Difficulty (1-3)</label>
+    <br>
+    <input type="radio" [(ngModel)]="selectedRecipe.difficulty" value=1> 1 (Easy) <br>
+    <input type="radio" [(ngModel)]="selectedRecipe.difficulty" value=2> 2 (Medium) <br>
+    <input type="radio" [(ngModel)]="selectedRecipe.difficulty" value=3> 3 (Hard)<br>
+    <button (click)="finishEditing()">Done</button>
+  </div>
 </div>

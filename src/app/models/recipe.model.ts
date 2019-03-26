@@ -27,7 +27,7 @@
 
 export class Recipe {
   made: string = 'Haven\'t made this yet!';
-  constructor(public title: string, public ingredients: string[], public instructions: string) {}
+  constructor(public title: string, public ingredients: string[], public instructions: string, public difficulty: number) {}
   markMade(){
     this.made = 'Made this!';
   }

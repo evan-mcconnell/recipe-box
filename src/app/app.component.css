@@ -1,0 +1,9 @@
+p {
+  width: 10%;
+}
+
+.edit-box {
+  position: absolute;
+  right: 60px;
+  top: 100px;
+}
